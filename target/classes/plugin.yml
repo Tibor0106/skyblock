@@ -1,0 +1,24 @@
+name: Skyblockplugin
+version: 1.0
+main: skyblock.me.jack.Skyblock
+api-version: 1.18
+author: Jack122
+commands:
+  is-items:
+    permission: skybloock.is-items
+    description: Get custom items and edit tham
+  is-social:
+    permission: skybloock.is-social
+    description: Edit news, information ect
+  is-player:
+    permission: skybloock.is-player
+    description: Edit player level and credit. Get information for player. ETC
+  plugins:
+    aliases: [plugin, pl]
+  credit:
+    permission: skyblock.credit.view
+  is-global:
+    permission: skyblock.is-global
+    description: reload plugin etc
+  mute:
+    description: mute players

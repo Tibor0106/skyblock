@@ -1,0 +1,12 @@
+prefix: "&7( &b&lSky&f&lBlock&r §7) &f»"
+
+#database
+db_username: "root"
+db_password: ""
+db: "exploremc"
+db_address: "localhost"
+db_port: 3306
+
+
+daily_news:
+  - '&cText'
