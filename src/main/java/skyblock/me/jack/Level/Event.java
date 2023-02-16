@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import skyblock.me.jack.commnds.items.item;
 import skyblock.me.jack.variables.var;
 
 public class Event implements Listener {
@@ -23,6 +24,11 @@ public class Event implements Listener {
             return;
         }
         int pp = event.getDroppedExp();
+        if(p.getInventory().getItemInHand().equals(item.getSenior_sword())){
+            pp=pp*2;
+
+        }
+
         p.sendMessage(var.Prefix()+" §e+ "+pp+" XP");
         var.setmost_xp(p, pp);
     }

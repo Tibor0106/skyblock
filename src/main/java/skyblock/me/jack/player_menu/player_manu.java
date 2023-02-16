@@ -1,7 +1,6 @@
 package skyblock.me.jack.player_menu;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -41,10 +40,21 @@ public class player_manu {
         profile.setItemMeta(pitem);
         profile.addUnsafeEnchantment(Enchantment.MENDING, 1);
         inv.setItem(10, profile);
+        //news
+        ItemStack ni = new ItemStack(Material.FIREWORK_ROCKET);
+        ItemMeta nimeta = ni.getItemMeta();
+        nimeta.setDisplayName("§a✕ §bNapi újdonságok / hírek");
+        ArrayList<String> news = new ArrayList<>();
+        nimeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        ni.setItemMeta(nimeta);
+        ni.addUnsafeEnchantment(Enchantment.MENDING, 1);
+        inv.setItem(13, ni);
 
+        //set news
 
 
         p.openInventory(inv);
+
 
     }
 }

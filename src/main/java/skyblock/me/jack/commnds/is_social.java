@@ -1,8 +1,10 @@
 package skyblock.me.jack.commnds;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import skyblock.me.jack.variables.var;
 
@@ -24,6 +26,26 @@ public class is_social implements CommandExecutor {
                      sender.sendMessage(var.Prefix()+" §eUsage: /is-social daily-news add-line <line>");
                  }
             }
+        } else if(args[0].equalsIgnoreCase("broadcast")){
+            if (!sender.hasPermission("skyblock.command.is-social.broadcast")){
+                sender.sendMessage(var.Prefix()+" §cNincs jogod ehez.");
+                return true;
+            }
+            if(args.length > 1){
+                StringBuilder str = new StringBuilder();
+                for (int i = 1; i <  args.length; i++) {
+                    str.append(args[i]+ " ");
+                }
+                String a = str.toString();
+                for (Player playres : Bukkit.getOnlinePlayers()){
+                    playres.sendMessage(var.Prefix()+" §4§lKÖZVETÍTÉS §r» §c"+a.replace("&","§"));
+                }
+
+
+            } else {
+                sender.sendMessage(var.Prefix()+" §eUsagse: /is-social broadcast <text>");
+            }
+
         }
         return false;
     }

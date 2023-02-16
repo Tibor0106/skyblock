@@ -15,7 +15,6 @@ public class menu {
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         menu.setItemMeta(meta);
         menu.addUnsafeEnchantment(Enchantment.MENDING, 1);
-
         p.getInventory().setItem(8, menu);
 
 

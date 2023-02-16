@@ -8,12 +8,15 @@ import org.bukkit.entity.Player;
 import skyblock.me.jack.Database.mysql;
 import skyblock.me.jack.variables.var;
 
-import java.util.UUID;
 
 public class mute_cmd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender.hasPermission("skyblock.command.mute")){
+            if(args.length !=2){
+                sender.sendMessage(var.Prefix()+" §eUsage: /mute <player> <time> §8| §c§otime to seconds!");
+                return true;
+            }
             int time;
             Player p;
             try {
@@ -29,19 +32,15 @@ public class mute_cmd implements CommandExecutor {
                 return  true;
             }
             mute.getMutecd().put(p.getUniqueId(), time);
-            sender.sendMessage(var.Prefix()+" §cJátékos le lett némítva.");
+            sender.sendMessage(var.Prefix()+" §cJátékos le lett némítva!");
             mysql.mute_log(sender.getName().toString(), p.getName().toString(), time);
             for(Player s : Bukkit.getOnlinePlayers()){
                 if (s.hasPermission("skyblock.command.mute")){
                     s.sendMessage(var.Prefix()+" §c§lNémítás: §r§e"+sender.getName()+ "§b némította §f"+p.getName()+"§b játékost §c"+time+" §bmásodpercre.");
                 }
-
             }
-
-            p.sendMessage(var.Prefix()+" §cLe lettél némítva §e"+time+"§c másodpercre. ");
-
+            p.sendMessage(var.Prefix()+" §cLe lettél némítva §e"+var.sec_to_time_format(time)+"");
         }
-
         return false;
     }
 }

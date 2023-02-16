@@ -45,6 +45,6 @@ public class mute {
 
             }
 
-        }.runTaskTimer(skyblock.me.jack.Skyblock.getPlugin(skyblock.me.jack.Skyblock.class), 0, 20);
+        }.runTaskTimer(skyblock.me.jack.Skyblock.getPlugin(skyblock.me.jack.Skyblock.class), 20, 20);
     }
 }

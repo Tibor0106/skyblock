@@ -17,6 +17,7 @@ public class is_player_tab implements TabCompleter {
             comp.add("credit-set");
             comp.add("level-set");
             comp.add("level-give");
+            comp.add("mute-history");
 
             for (String s : comp) {
                 if (s.toLowerCase().startsWith(args[0].toLowerCase())) {
