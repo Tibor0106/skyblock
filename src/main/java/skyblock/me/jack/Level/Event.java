@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import skyblock.me.jack.commnds.items.item;
+import skyblock.me.jack.commands.items.item;
 import skyblock.me.jack.variables.var;
 
 public class Event implements Listener {

@@ -42,7 +42,7 @@ public class island_protection implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player p = event.getPlayer();
-        if(p.hasPermission("skyblock.island.admin")){
+        if(p.hasPermission("skyblock.islands.admin")){
             return;
         }
         bottomLocation = getUserIslandsLowerPoint(p);

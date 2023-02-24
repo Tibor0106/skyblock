@@ -20,6 +20,9 @@ commands:
   is-global:
     permission: skyblock.command.is-global
     description: reload plugin etc
+  is-island:
+    permission: skyblock.command.is-island
+    description: manager users islands
   mute:
     description: mute players
     permission: skyblock.command.mute

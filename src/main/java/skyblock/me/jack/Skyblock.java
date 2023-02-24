@@ -1,19 +1,28 @@
 package skyblock.me.jack;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import skyblock.me.jack.Database.mysql;
-import skyblock.me.jack.commnds.*;
-import skyblock.me.jack.commnds.items.item_listener;
-import skyblock.me.jack.commnds.tab.is_items_tab;
-import skyblock.me.jack.commnds.tab.is_player_tab;
+import skyblock.me.jack.commands.*;
+import skyblock.me.jack.commands.items.item_listener;
+import skyblock.me.jack.commands.tab.is_items_tab;
+import skyblock.me.jack.commands.tab.is_player_tab;
+import skyblock.me.jack.commands.tab.island_tab;
+import skyblock.me.jack.island_settings.settings_gui_listener;
 import skyblock.me.jack.mute.mute;
 import skyblock.me.jack.mute.mute_cmd;
 import skyblock.me.jack.mute.mute_listner;
@@ -39,12 +48,15 @@ public final class Skyblock extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new item_listener(), this);
         getServer().getPluginManager().registerEvents(new mute_listner(), this);
+        getServer().getPluginManager().registerEvents(new settings_gui_listener(), this);
         getServer().getPluginManager().registerEvents(new commandspy_listener(), this);
         getServer().getPluginManager().registerEvents(new island_protection(), this);
         getServer().getPluginCommand("plugin").setExecutor(new pluginhider());
         getServer().getPluginCommand("is-player").setExecutor(new is_player());
+        getServer().getPluginCommand("is-island").setExecutor(new is_island());
         getServer().getPluginCommand("is-social").setExecutor(new is_social());
         getServer().getPluginCommand("is-player").setTabCompleter(new is_player_tab());
+        getServer().getPluginCommand("skyblock").setTabCompleter(new island_tab());
         getServer().getPluginCommand("credit").setExecutor(new credit());
         getServer().getPluginCommand("is-items").setExecutor(new is_items());
         getServer().getPluginCommand("mute").setExecutor(new mute_cmd());
@@ -122,7 +134,6 @@ public final class Skyblock extends JavaPlugin implements Listener {
     public void welcome(PlayerJoinEvent e){
          e.getPlayer().sendMessage(var.Prefix()+" §eSzia §a"+e.getPlayer().getName()+" §e! §eÜdvözöllek a szerveren!");
     }
-
 
 
 }
